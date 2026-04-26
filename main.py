@@ -5,7 +5,7 @@ import tempfile
 import os
 
 
-@register("zhiyu-astrbot-hjm", "知鱼", "一款随机哈基米语音的AstrBot插件", "2.0")
+@register("zhiyu-astrbot-hjm", "知鱼", "随机哈基米语音的AstrBot插件", "1.0")
 class MyPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -26,9 +26,9 @@ class MyPlugin(Star):
                         chain = [Record.fromFileSystem(temp_path)]
                         yield message.chain_result(chain)
                     else:
-                        yield message.plain_result("获取哈基米语音失败 请稍后重试")
+                        pass
         except Exception as e:
-            yield message.plain_result(f"获取语音时出错：{str(e)}")
+            pass
         finally:
             if temp_path and os.path.exists(temp_path):
                 try:
